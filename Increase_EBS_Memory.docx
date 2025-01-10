@@ -1,6 +1,4 @@
 # 1. Expand the EBS Volume
-# -------------------------
-
 # Access the AWS Management Console and follow these steps:
 # 1. Navigate to the EC2 Dashboard.
 # 2. Select the instance you want to expand.
@@ -10,8 +8,6 @@
 # Note: Perform these steps in the AWS web interface.
 
 # 2. Resize the Partition on the Instance
-# ---------------------------------------
-
 # Log in to your EC2 instance:
 ssh ubuntu@<your-ec2-ip>
 
@@ -25,13 +21,9 @@ sudo growpart /dev/xvda 1
 sudo resize2fs /dev/xvda1
 
 # 3. Verify the New Size
-# ----------------------
-
 # Check the updated disk size:
 df -h
 
 # 4. Reboot (Optional)
-# ---------------------
-
 # If the new size does not reflect, reboot the instance:
 sudo reboot
