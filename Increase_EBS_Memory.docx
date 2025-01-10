@@ -1,0 +1,37 @@
+# 1. Expand the EBS Volume
+# -------------------------
+
+# Access the AWS Management Console and follow these steps:
+# 1. Navigate to the EC2 Dashboard.
+# 2. Select the instance you want to expand.
+# 3. Locate the EBS volume in the Storage section.
+# 4. Modify the volume by increasing its size (e.g., from 8GB to 16GB).
+
+# Note: Perform these steps in the AWS web interface.
+
+# 2. Resize the Partition on the Instance
+# ---------------------------------------
+
+# Log in to your EC2 instance:
+ssh ubuntu@<your-ec2-ip>
+
+# Install 'cloud-guest-utils' if not already installed:
+sudo apt-get install cloud-guest-utils
+
+# Expand the partition to use the additional disk space:
+sudo growpart /dev/xvda 1
+
+# Resize the filesystem to utilize the expanded partition:
+sudo resize2fs /dev/xvda1
+
+# 3. Verify the New Size
+# ----------------------
+
+# Check the updated disk size:
+df -h
+
+# 4. Reboot (Optional)
+# ---------------------
+
+# If the new size does not reflect, reboot the instance:
+sudo reboot
